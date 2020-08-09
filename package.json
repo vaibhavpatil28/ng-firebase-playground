@@ -20,9 +20,11 @@
     "@angular/platform-browser": "~9.1.6",
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
+    "@stripe/stripe-js": "^1.8.0",
     "bootstrap": "^4.5.0",
     "firebase": "^7.15.5",
     "rxjs": "~6.5.4",
+    "stripe": "^8.81.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
