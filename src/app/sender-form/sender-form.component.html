@@ -1,0 +1,178 @@
+<div class="card">
+  <div class="card-header">
+    <div class="utils__title">
+      <strong>{{cardTitle}}</strong>
+    </div>
+    <div class="utils__titleDescription">
+    </div>
+  </div>
+  <div class="card-body">
+    <form role="form" #senderValidForm="ngForm" [formGroup]="senderForm" (submit)="submitForm()"
+      class="ant-form ant-form-vertical ng-untouched ng-pristine ng-valid">
+
+      <div class="row">
+        <div class="form-group col-12">
+          <label for="senderCountry">Country</label>
+          <select id="senderCountry" class="form-control" formControlName="senderCountry" placeholder="Country"
+            [ngClass]="senderForm.controls.senderCountry.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+            <!-- <option value="" hidden selected>Select country</option> -->
+            <option *ngFor="let country of countryList" [value]="country.id">{{country.name}}</option>
+          </select>
+          <app-error [control]="senderForm.get('senderCountry')">
+            <div *ngIf="senderForm.hasError('required', 'senderCountry')">
+              This is required field.
+            </div>
+          </app-error>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="senderName">Name</label>
+          <input type="text" class="form-control" formControlName="senderName" id="senderName" placeholder="Name"
+            [ngClass]="senderForm.controls.senderName.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+          <app-error [control]="senderForm.get('senderName')">
+            <div *ngIf="senderForm.hasError('required', 'senderName')">
+              This is required field.
+            </div>
+            <ng-container *ngIf="!senderForm.hasError('required','senderName')">
+              <div *ngIf="senderForm.hasError('pattern', 'senderName')">
+                This field required alphabets.
+              </div>
+            </ng-container>
+          </app-error>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="senderCompany">Company</label>
+          <input type="text" class="form-control" formControlName="senderCompany" id="senderCompany"
+            placeholder="Company" [ngClass]="senderForm.controls.senderCompany.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+          <app-error [control]="senderForm.get('senderCompany')">
+            <div *ngIf="senderForm.hasError('required', 'senderCompany')">
+              This is required field.
+            </div>
+          </app-error>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-4">
+          <label for="senderZip">Zip</label>
+          <input type="text" class="form-control" formControlName="senderZip" id="senderZip" placeholder="Zip"
+            [ngClass]="senderForm.controls.senderZip.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+          <app-error [control]="senderForm.get('senderZip')">
+            <div *ngIf="senderForm.hasError('required', 'senderZip')">
+              This is required field.
+            </div>
+            <ng-container *ngIf="!senderForm.hasError('required','senderZip')">
+              <div *ngIf="senderForm.hasError('pattern', 'senderZip')">
+                This field required numeric value.
+              </div>
+            </ng-container>
+          </app-error>
+        </div>
+        <div class="form-group col-4">
+          <label for="senderState">State</label>
+          <select id="senderState" class="form-control" formControlName="senderState" placeholder="State" [ngClass]="senderForm.controls.senderState.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+            <option value="" hidden selected>Select State</option>
+            <option *ngFor="let state of stateList$ | async" [value]="state">{{state}}</option>
+          </select>
+          <app-error [control]="senderForm.get('senderState')">
+            <div *ngIf="senderForm.hasError('required', 'senderState')">
+              This is required field.
+            </div>
+          </app-error>
+        </div>
+        <div class="form-group col-4">
+          <label for="senderCity">City</label>
+          <input type="text" class="form-control" formControlName="senderCity" id="senderCity" placeholder="City"
+            [ngClass]="senderForm.controls.senderCity.status === 'INVALID' &&
+                                      senderValidForm.submitted ? 'has-error-input': 'has-input'">
+          <app-error [control]="senderForm.get('senderCity')">
+            <div *ngIf="senderForm.hasError('required', 'senderCity')">
+              This is required field.
+            </div>
+            <ng-container *ngIf="!senderForm.hasError('required','senderCity')">
+              <div *ngIf="senderForm.hasError('pattern', 'senderCity')">
+                This field required alphabets.
+              </div>
+            </ng-container>
+          </app-error>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="senderAddress1">Address 1</label>
+        <input type="text" class="form-control" formControlName="senderAddress1" id="senderAddress1"
+          placeholder="Address 1"
+          [ngClass]="senderForm.controls.senderAddress1.status === 'INVALID' &&
+            senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+        <app-error [control]="senderForm.get('senderAddress1')">
+          <div *ngIf="senderForm.hasError('required', 'senderAddress1')">
+            This is required field.
+          </div>
+          <ng-container *ngIf="!senderForm.hasError('required','senderAddress1')">
+            <div *ngIf="senderForm.hasError('pattern', 'senderAddress1')">
+              This field required numeric value.
+            </div>
+          </ng-container>
+        </app-error>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="senderAddress2">Address 2</label>
+          <input type="text" class="form-control" formControlName="senderAddress2" id="senderAddress2"
+            placeholder="Address 2">
+        </div>
+        <div class="form-group col-6">
+          <label for="senderAddress3">Address 3</label>
+          <input type="text" class="form-control" formControlName="senderAddress3" id="senderAddress3"
+            placeholder="Address 3">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="senderPhone">Phone</label>
+          <input type="tel" class="form-control" formControlName="senderPhone" id="senderPhone" placeholder="Phone"
+            [ngClass]="senderForm.controls.senderPhone.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+          <app-error [control]="senderForm.get('senderPhone')">
+            <div *ngIf="senderForm.hasError('required', 'senderPhone')">
+              This is required field.
+            </div>
+            <ng-container *ngIf="!senderForm.hasError('required','senderPhone')">
+              <div *ngIf="senderForm.hasError('pattern', 'senderPhone')">
+                This field required numeric value.
+              </div>
+              <div *ngIf="senderForm.hasError('minlength', 'senderPhone')">
+                Atleast required {{senderForm.getError('minlength', 'senderPhone').requiredLength}} numbers
+              </div>
+              <div *ngIf="senderForm.hasError('maxlength', 'senderPhone')">
+                Max limit is {{senderForm.getError('maxlength', 'senderPhone').requiredLength}} numbers
+              </div>
+            </ng-container>
+          </app-error>
+        </div>
+        <div class="form-group col-6">
+          <label for="senderEmail">Email</label>
+          <input type="text" class="form-control" formControlName="senderEmail" id="senderEmail" placeholder="Email"
+            [ngClass]="senderForm.controls.senderEmail.status === 'INVALID' &&
+              senderValidForm.submitted ? 'has-error-input' : 'has-input'">
+          <app-error [control]="senderForm.get('senderEmail')">
+            <div *ngIf="senderForm.hasError('required', 'senderEmail')">
+              This is required field.
+            </div>
+            <ng-container *ngIf="!senderForm.hasError('required','senderEmail')">
+              <div *ngIf="senderForm.hasError('pattern', 'senderEmail')">
+                Please enter valid email
+              </div>
+            </ng-container>
+          </app-error>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
